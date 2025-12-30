@@ -1,9 +1,14 @@
-FROM nginx:latest
+# Base image
+FROM ubuntu:22.04
 
-RUN rm -rf /usr/share/nginx/html/*
+# Update packages and install nginx & python
+RUN apt-get install -y nginx -y && apt-get clean
 
-COPY . /usr/share/nginx/html/
+#Copy index.html file
+COPY index.html /usr/share/nginx/html
 
+# Expose Nginx port
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off"]
+# Start Nginx in foreground
+CMD ["nginx", "-g", "daemon off;"]
