@@ -2,7 +2,7 @@
 FROM ubuntu:22.04
 
 # Update packages and install nginx & python
-RUN apt-get install -y nginx && apt-get clean
+RUN apt-get install nginx -y && apt-get clean
 
 #Copy index.html file
 COPY index.html /usr/share/nginx/html
